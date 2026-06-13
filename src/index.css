@@ -1,1 +1,50 @@
 @import "tailwindcss";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* baloo-2-latin-wght-normal */
+@font-face {
+  font-family: "Baloo 2 Variable";
+  font-style: normal;
+  font-display: auto;
+  font-weight: 400 800;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/baloo-2:vf@latest/latin-wght-normal.woff2)
+    format("woff2-variations");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+  /* Custom brand colours */
+  --spacing: 4px;
+  --color-jasmine: #f9d076;
+  --color-jasmine-light: #fdebc3;
+  --color-jasmine-dark: #775204;
+  --color-chicory: #88b4fb;
+  --color-chicory-light: #c4dafd;
+  --color-chicory-dark: #124f69;
+  --color-berry: #ff4747;
+  --color-berry-light: #ff9999;
+  --color-berry-dark: #753522;
+  --color-tahini: #fff6e6;
+  --color-molasses: #1f1c21;
+}
+
+@theme inline {
+  --font-sans: "Baloo 2 Variable", sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-tahini;
+  }
+  h1 {
+    @apply text-5xl font-bold;
+  }
+  h2 {
+    @apply text-2xl font-medium;
+  }
+}
