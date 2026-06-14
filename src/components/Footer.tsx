@@ -2,32 +2,24 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer>
-      <i className="bi bi-file-earmark-font"></i>
+    <footer className="text-center">
+      <hr></hr>
       <h3>Attributions</h3>
-      <ul>
+      <ul className="flex flex-col justify-evenly pb-2 text-chicory-dark md:flex-row dark:text-chicory">
         <li>
-          <a href="https://open-meteo.com/">Open-Meteo Weather API</a>
+          <i className="bi bi-cloud-sun-fill pr-2"></i>
+          <a href="https://open-meteo.com/">Open-Meteo</a>
         </li>
         <li>
-          <i
-            className="bi bi-file-earmark-font"
-            style={{ fontSize: 1, color: "#0000FF" }}
-          ></i>
+          <i className="bi bi-file-earmark-font-fill pr-2"></i>
           <a href="https://fontsource.org/">Fontsource</a>
         </li>
         <li>
-          <i
-            className="bi bi-bootstrap"
-            style={{ fontSize: 1, color: "#0000FF" }}
-          ></i>
+          <i className="bi bi-bootstrap-fill pr-2"></i>
           <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>
         </li>
         <li>
-          <i
-            className="bi bi-transparency"
-            style={{ fontSize: 1, color: "#0000FF" }}
-          ></i>
+          <i className="bi bi-transparency pr-2"></i>
           <a href="https://www.svgrepo.com/">SVG Repo</a>
         </li>
       </ul>

@@ -1,14 +1,16 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import NavigationBar from "../components/NavigationBar";
 import SearchBar from "../components/SearchBar";
-import ThemeToggle from "../components/ThemeToggle";
+import sun from "../assets/sun.png";
 
 export default function HomePage() {
   return (
-    <>
-      <Header />
-      <ThemeToggle />
-    </>
+    <div className="flex min-h-screen flex-col p-4 text-center">
+      <img
+        src={sun}
+        className="self-center"
+        alt="smiling sun peeking over the search bar"
+        width={1000}
+      />
+      <SearchBar />
+    </div>
   );
 }

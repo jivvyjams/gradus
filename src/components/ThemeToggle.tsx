@@ -6,7 +6,6 @@ export default function ThemeToggle() {
   function switchTheme() {
     setIsDarkMode((prev) => !prev);
     document.documentElement.classList.toggle("dark");
-    console.log(`toggled theme`);
   }
 
   return (

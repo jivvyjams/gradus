@@ -29,6 +29,7 @@
   --color-berry-dark: #753522;
   --color-tahini: #fff6e6;
   --color-molasses: #1f1c21;
+  --drop-shadow: filter: drop-shadow(#301934 20px 10px 4px);
 }
 
 @theme inline {
@@ -38,6 +39,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
+  *,
+  *::before,
+  *::after {
+    @apply box-border;
+  }
   body {
     @apply bg-tahini;
   }
@@ -46,5 +52,11 @@
   }
   h2 {
     @apply text-2xl font-medium;
+  }
+  h3 {
+    @apply text-xl font-medium;
+  }
+  p a {
+    @apply font-semibold text-chicory underline;
   }
 }
