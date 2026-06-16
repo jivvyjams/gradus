@@ -62,9 +62,7 @@ export default function NotFoundPage() {
   return (
     <div className="flex flex-col px-4 text-center">
       <h2 className="text-6xl font-black text-chicory-dark">404</h2>
-      <h3 className="text-4xl font-black text-chicory-dark md:text-4xl">
-        Page Not Found
-      </h3>
+      <h3 className="text-4xl font-black text-chicory-dark">Page Not Found</h3>
       <img
         className="self-center"
         src={cloud}

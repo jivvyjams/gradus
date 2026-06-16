@@ -77,7 +77,11 @@ export default function HomePage({ isDarkMode }: HomePageProps) {
       />
       <SearchBar onSearch={onSearch} />
       {state.status === "loading" && <p>Searching location...</p>}
-      {state.status === "error" && <p>Something went wrong: {state.message}</p>}
+      {state.status === "error" && (
+        <p className="text-berry-dark dark:text-berry">
+          Something went wrong: {state.message}
+        </p>
+      )}
       {state.status === "success" && (
         <p>
           Found: {state.data.name}, {state.data.country} — {state.data.latitude}

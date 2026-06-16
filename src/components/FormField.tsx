@@ -1,6 +1,5 @@
 interface FormFieldProps {
   label: string;
-  id: string;
   name: string;
   icon: string;
   type?: string;
@@ -29,7 +28,6 @@ export default function FormField({
       {multiline ? (
         <textarea
           className="mb-4 h-32 w-full rounded-xl rounded-tl-none border-3 border-jasmine-dark p-2 focus-visible:border-chicory focus-visible:outline-none"
-          id={name}
           name={name}
           placeholder={placeholder}
           required
@@ -37,7 +35,6 @@ export default function FormField({
       ) : (
         <input
           className="mb-4 w-full rounded-xl rounded-tl-none border-3 border-jasmine-dark p-2 focus-visible:border-chicory focus-visible:outline-none"
-          id={name}
           name={name}
           placeholder={placeholder}
           type={type}
