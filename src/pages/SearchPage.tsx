@@ -1,11 +1,5 @@
 import { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar";
-import sun from "../assets/sun.png";
-import moon from "../assets/moon.png";
-
-interface HomePageProps {
-  isDarkMode: boolean;
-}
 
 interface Location {
   id: number;
@@ -21,7 +15,7 @@ type FetchState =
   | { status: "error"; message: string }
   | { status: "success"; data: Location };
 
-export default function HomePage({ isDarkMode }: HomePageProps) {
+export default function SearchPage() {
   const [state, setState] = useState<FetchState>({ status: "idle" });
   const [locationQuery, setLocationQuery] = useState("");
 
@@ -65,16 +59,6 @@ export default function HomePage({ isDarkMode }: HomePageProps) {
 
   return (
     <div className="flex min-h-screen flex-col p-4 text-center">
-      <img
-        src={isDarkMode ? moon : sun}
-        className="self-center"
-        alt={
-          isDarkMode
-            ? "smiling moon peeking over the search bar"
-            : "sun peeking over the search bar"
-        }
-        width={1000}
-      />
       <SearchBar onSearch={onSearch} />
       {state.status === "loading" && <p>Searching location...</p>}
       {state.status === "error" && <p>Something went wrong: {state.message}</p>}

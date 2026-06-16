@@ -1,3 +1,5 @@
+import FormField from "./FormField";
+
 export default function ContactForm() {
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
@@ -6,50 +8,38 @@ export default function ContactForm() {
 
   return (
     <form className="flex flex-col items-center" onSubmit={handleSubmit}>
-      <div className="group flex min-w-11/12 flex-col items-start md:min-w-4/6">
-        <label
-          className="rounded-t-xl bg-jasmine-dark px-4 pt-1 text-tahini group-focus-within:bg-chicory group-focus-within:text-molasses"
-          htmlFor="name"
-        >
-          <i className="bi bi-person-vcard-fill pr-2"></i>Name *
-        </label>
-        <input
-          className="mb-4 w-full rounded-xl rounded-tl-none border-3 border-jasmine-dark p-2 focus-visible:border-chicory focus-visible:outline-none"
-          name="name"
-          id="name"
-          placeholder="John Smith"
-          required
-        ></input>
-      </div>
-      <div className="group flex min-w-11/12 flex-col items-start md:min-w-4/6">
-        <label
-          className="rounded-t-xl bg-jasmine-dark px-4 pt-1 text-tahini group-focus-within:bg-chicory group-focus-within:text-molasses"
-          htmlFor="email"
-        >
-          <i className="bi bi-mailbox2-flag pr-2"></i>E-mail *
-        </label>
-        <input
-          className="mb-4 w-full rounded-xl rounded-tl-none border-3 border-jasmine-dark p-2 focus-visible:border-chicory focus-visible:outline-none"
-          name="email"
-          type="email"
-          placeholder="example@email.com"
-          required
-        ></input>
-      </div>
-      <div className="group flex min-w-11/12 flex-col items-start md:min-w-4/6">
-        <label
-          className="rounded-t-xl bg-jasmine-dark px-4 pt-1 text-tahini group-focus-within:bg-chicory group-focus-within:text-molasses"
-          htmlFor="message"
-        >
-          <i className="bi bi-chat-square-text-fill pr-2"></i>Message *
-        </label>
-        <textarea
-          className="mb-4 h-32 w-full rounded-xl rounded-tl-none border-3 border-jasmine-dark p-2 focus-visible:border-chicory focus-visible:outline-none"
-          name="message"
-          placeholder="Hello, what's on your mind?"
-          required
-        ></textarea>
-      </div>
+      <FormField
+        label="Name"
+        id="name"
+        name="name"
+        icon="bi-person-vcard-fill"
+        type="text"
+        placeholder="John Smith"
+      />
+      <FormField
+        label="E-mail"
+        id="email"
+        name="email"
+        icon="bi-mailbox2-flag"
+        type="email"
+        placeholder="example@email.com"
+      />
+      <FormField
+        label="Phone"
+        id="phone"
+        name="phone"
+        icon="bi-phone-fill"
+        type="tel"
+        placeholder="(+31) 61235678"
+      />
+      <FormField
+        label="Message"
+        id="message"
+        name="message"
+        icon="bi-chat-square-quote-fill"
+        placeholder="Hello, what's on your mind?"
+        multiline
+      />
       <button
         className="cursor-pointer rounded-2xl bg-chicory p-4 font-semibold text-molasses hover:brightness-90 dark:bg-chicory-dark dark:text-tahini dark:brightness-110"
         type="submit"
