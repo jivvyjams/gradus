@@ -1,11 +1,17 @@
 # Gradus
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://gradus-app-red.vercel.app/)
+
 A simple weather app that lets you search for any city and instantly see its current conditions including temperature, feels like, precipitation, and wind speed. Gradus pairs [Open-Meteo](https://open-meteo.com/)'s geocoding and forecast APIs to turn a place name into live weather data. The name is derived from the Latin word for temperature.
 
 Built for the [HackYourFuture](https://www.hackyourfuture.net/) program as part of the front-end specialization track.
 
+**🔗 Live demo: [gradus-app-red.vercel.app](https://gradus-app-red.vercel.app/)**
+
 <p align="center">
-  <img src="src/assets/screenshot.png" alt="Gradus weather app screenshot" width="700" />
+  <a href="https://gradus-app-red.vercel.app/">
+    <img src="src/assets/screenshot.png" alt="Gradus weather app screenshot" width="700" />
+  </a>
 </p>
 
 ## Features
@@ -54,6 +60,10 @@ npm run dev
 1. On the home page, the search bar geocodes the entered city via Open-Meteo's geocoding API to find its coordinates.
 2. The app navigates to `/weather/:name/:latitude/:longitude`, carrying the result in the URL (so weather links are shareable and refresh-safe).
 3. The weather page reads those URL params, fetches the current forecast for the coordinates, and renders it in a weather card.
+
+## Deployment
+
+The app is deployed on [Vercel](https://vercel.com/) and available at **[gradus-app-red.vercel.app](https://gradus-app-red.vercel.app/)**. Pushes to the main branch are built and deployed automatically.
 
 ## Project structure
 
