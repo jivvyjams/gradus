@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { getWeatherInfo } from "../utils/weatherCodes";
 import WeatherCard from "../components/WeatherCard";
 
 interface Forecast {
@@ -29,10 +28,7 @@ export default function WeatherPage() {
   const validCoords = Number.isFinite(lat) && Number.isFinite(lon);
 
   useEffect(() => {
-    if (!validCoords) {
-      setState({ status: "error", message: `Error! Invalid coordinates.` });
-      return;
-    }
+    if (!validCoords) return;
     const fetchForecast = async () => {
       setState({ status: "loading" });
       try {
@@ -61,6 +57,14 @@ export default function WeatherPage() {
 
   return (
     <div className="flex min-h-screen flex-col p-4 text-center">
+      {!validCoords && (
+        <div>
+          <i className="bi bi-geo-alt-fill p-4 text-4xl"></i>
+          <p className="text-2xl text-berry-dark dark:text-berry">
+            Invalid coordinates.
+          </p>
+        </div>
+      )}
       {state.status === "loading" && (
         <div>
           <i className="bi bi-arrow-repeat p-4 text-4xl"></i>
@@ -79,7 +83,9 @@ export default function WeatherPage() {
           </p>
         </div>
       )}
-      {state.status === "success" && <WeatherCard />}
+      {state.status === "success" && (
+        <WeatherCard data={state.data} name={name} />
+      )}
     </div>
   );
 }

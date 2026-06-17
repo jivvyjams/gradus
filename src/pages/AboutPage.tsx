@@ -2,12 +2,26 @@ export default function AboutPage() {
   return (
     <div className="mx-4 flex flex-col place-items-center gap-4 px-4">
       <h2 className="text-4xl font-bold md:text-6xl">About</h2>
-      <p className="text-2xl">
-        This project was made for the HackYourFuture program as part of the
-        front-end specialization track. Here's the tech-stack used to create
-        this project:
+      <p className="px-8 text-center text-2xl">
+        Gradus is a simple weather app that lets you search for any city and see
+        its current weather forecast. It relies Open-Meteo's geocoding and
+        forecasting APIs to turn a place name into live weather data. Gradus
+        supports both light and dark themes and is built responsively across
+        desktop and mobile. The name is derived from the Latin word for
+        temperature.
       </p>
-      <ul className="flex flex-col gap-4 py-8 text-lg md:block md:columns-2">
+      <p className="px-8 text-center text-2xl">
+        This app serves as submission the mid-term project for the
+        HackYourFuture program and was built within a week. Due to skill
+        limitations at this stage as well as the time constraints, some ideas
+        were cut short or not implemented. This includes a navigation bar,
+        favorite locations, user settings as well as more detailed views for the
+        weather page (hourly, daily forecasts).
+      </p>
+      <p className="pt-4 text-2xl">
+        Here's the tech-stack used to create this project:
+      </p>
+      <ul className="flex flex-col gap-4 pb-8 text-lg md:block md:columns-2">
         <li className="flex md:py-2">
           <i className="bi bi-filetype-tsx pr-2"></i>
           <p>
