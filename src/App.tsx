@@ -28,7 +28,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage isDarkMode={isDarkMode} />} />
           <Route
-            path="/weather/:latitude/:longitude"
+            path="/weather/:name/:latitude/:longitude"
             element={<WeatherPage />}
           />
           <Route path="/about" element={<AboutPage />} />

@@ -55,7 +55,9 @@ export default function HomePage({ isDarkMode }: HomePageProps) {
         }
 
         const location = data.results[0];
-        navigate(`/weather/${location.latitude}/${location.longitude}`);
+        navigate(
+          `/weather/${location.name}/${location.latitude}/${location.longitude}`,
+        );
       } catch (error: Error | unknown) {
         const message =
           error instanceof Error ? error.message : "Unknown error";

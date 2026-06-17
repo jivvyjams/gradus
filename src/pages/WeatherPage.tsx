@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { getWeatherInfo } from "../utils/weatherCodes";
+import WeatherCard from "../components/WeatherCard";
 
 interface Forecast {
   current: {
@@ -8,6 +10,7 @@ interface Forecast {
     apparent_temperature: number;
     precipitation: number;
     wind_speed_10m: number;
+    weather_code: number;
   };
 }
 
@@ -19,30 +22,34 @@ type FetchState =
 
 export default function WeatherPage() {
   const [state, setState] = useState<FetchState>({ status: "idle" });
-  const { latitude, longitude } = useParams();
+  const { latitude, longitude, name } = useParams();
 
   const lat = Number(latitude);
   const lon = Number(longitude);
   const validCoords = Number.isFinite(lat) && Number.isFinite(lon);
 
   useEffect(() => {
-    if (!validCoords) return;
+    if (!validCoords) {
+      setState({ status: "error", message: `Error! Invalid coordinates.` });
+      return;
+    }
     const fetchForecast = async () => {
       setState({ status: "loading" });
       try {
         const response = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation,apparent_temperature,wind_speed_10m`,
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation,apparent_temperature,wind_speed_10m,weather_code`,
         );
 
         if (!response.ok) {
-          throw new Error(`HTTP Error: ${response.status}`);
+          throw new Error(`HTTP Error! ${response.status}`);
         }
+
         const data: Forecast = await response.json();
         setState({
           status: "success",
           data: data.current,
         });
-      } catch (error: Error | unknown) {
+      } catch (error) {
         const message =
           error instanceof Error ? error.message : "Unknown error";
         setState({ status: "error", message });
@@ -72,16 +79,7 @@ export default function WeatherPage() {
           </p>
         </div>
       )}
-      {state.status === "success" && (
-        <div>
-          <h1>Success!</h1>
-          <p>Location: Leiden</p>
-          <p>Temperature: {state.data.temperature_2m}°C</p>
-          <p>Feels like: {state.data.apparent_temperature}°C</p>
-          <p>Precipitation: {state.data.precipitation}mm</p>
-          <p>Wind: {state.data.wind_speed_10m}km/h</p>
-        </div>
-      )}
+      {state.status === "success" && <WeatherCard />}
     </div>
   );
 }
