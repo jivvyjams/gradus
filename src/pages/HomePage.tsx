@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import SearchBar from "../components/SearchBar";
 import sun from "../assets/sun.png";
 import moon from "../assets/moon.png";
@@ -22,6 +23,7 @@ type FetchState =
   | { status: "success"; data: Location };
 
 export default function HomePage({ isDarkMode }: HomePageProps) {
+  const navigate = useNavigate();
   const [state, setState] = useState<FetchState>({ status: "idle" });
   const [locationQuery, setLocationQuery] = useState("");
 
@@ -52,7 +54,8 @@ export default function HomePage({ isDarkMode }: HomePageProps) {
           return;
         }
 
-        setState({ status: "success", data: data.results[0] });
+        const location = data.results[0];
+        navigate(`/weather/${location.latitude}/${location.longitude}`);
       } catch (error: Error | unknown) {
         const message =
           error instanceof Error ? error.message : "Unknown error";
@@ -61,7 +64,7 @@ export default function HomePage({ isDarkMode }: HomePageProps) {
     };
 
     fetchLocation();
-  }, [locationQuery]);
+  }, [locationQuery, navigate]);
 
   return (
     <div className="flex min-h-screen flex-col p-4 text-center">
@@ -80,12 +83,6 @@ export default function HomePage({ isDarkMode }: HomePageProps) {
       {state.status === "error" && (
         <p className="text-berry-dark dark:text-berry">
           Something went wrong: {state.message}
-        </p>
-      )}
-      {state.status === "success" && (
-        <p>
-          Found: {state.data.name}, {state.data.country} — {state.data.latitude}
-          , {state.data.longitude}
         </p>
       )}
     </div>
